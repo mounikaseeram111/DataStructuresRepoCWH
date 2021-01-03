@@ -1,11 +1,3 @@
-/******************************************************************************
-
-                            Online C Compiler.
-                Code, Compile, Run and Debug C program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -133,6 +125,30 @@ struct Node* deletionAtGivenElement(struct Node *head,int data){
     
 }
 
+void printMiddle(struct Node *head){
+    struct Node *slow_ptr = head;
+    struct Node *fast_ptr = head;
+    while(fast_ptr != NULL){
+        slow_ptr = slow_ptr->next;
+        //fast_ptr = fast_ptr->next->next;  
+        
+    }
+    printf("Middle element of linked list is %d\n",slow_ptr->data);
+}
+
+//count the no of occurances of given element in the linked list
+void countofGivenElement(struct Node *head,int element){
+    int count = 0;
+    struct Node *ptr = head;
+    while(ptr != NULL){
+        if(ptr->data == element){
+            count++;
+        }
+        ptr = ptr->next;
+    }
+    printf("The element %d occurs %d no of time in the linked list\n",element,count);
+    
+}
 
 
 
@@ -158,7 +174,7 @@ int main()
     head -> data = 7;
     head -> next = second;
     
-    second -> data = 20;
+    second -> data = 122;
     second -> next = third;
     
     third -> data =100;
@@ -181,9 +197,11 @@ int main()
     //head = deletionAtTheBegin(head);
     //head = deletionAtIndex(head,2);
     //head = deletionAtEnd(head);
-    head = deletionAtGivenElement(head,100);
+   // head = deletionAtGivenElement(head,100);
     
-    linkedlistTraversal(head);
+   // linkedlistTraversal(head);
+   //printMiddle(head);
+   countofGivenElement(head,122);
 
     return 0;
 }
