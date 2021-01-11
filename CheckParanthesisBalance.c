@@ -66,7 +66,11 @@ char peek(struct Stack* ptr,char i){
          printf("The stack element is %c\n",ptr->arr[i]);
      }
  }
-int isBalanceParanthesis(struct Stack* ptr, struct Stack* temp){
+int isBalanceParanthesis(struct Stack* ptr){
+    struct Stack *temp;
+    temp->size = 15;
+   temp->top=-1;
+   temp->arr = (char*)malloc(temp->size * sizeof(char));
      for(int i = 0;i<=ptr->top;i++){
          printf("The stack element is %c\n",ptr->arr[i]);
          if(ptr->arr[i] == '('){
@@ -94,13 +98,11 @@ int main()
 {
   struct Stack *s = (struct Stack*)malloc(sizeof(struct Stack));
   //to push and pop the paranthesis ( and )
-  struct Stack *temp = (struct Stack*)malloc(sizeof(struct Stack));
+  
    s->size = 15;
    s->top=-1;
    s->arr = (char*)malloc(s->size * sizeof(char));
-   temp->size = 15;
-   temp->top=-1;
-   temp->arr = (char*)malloc(temp->size * sizeof(char));
+   
    push(s,'3');
    push(s,'*');
    push(s,'2');
@@ -115,7 +117,6 @@ int main()
    //printf("Peek Element is %d \n",peek(s,7));
    //printf("Stack Top  Element is %d \n",stackTop(s));
    //printf("Stack Bottom  Element is %d \n",stackBottom(s));
-  // push(temp,'1');
    if(isEmpty(s)){
        printf("Stack is empty\n");
    }
@@ -123,7 +124,7 @@ int main()
        printf("NOt empty\n");
    }
    printf("This is top of stack %d\n",s->top);
-   isBalanceParanthesis(s,temp);
+   isBalanceParanthesis(s);
    //StackTraversal(s);
    
     return 0;
